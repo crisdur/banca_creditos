@@ -1,16 +1,40 @@
-# banca_creditos
+# Banca créditos:
 
-A new Flutter project.
+Aplicación para acceder a la simulación personalizada de distintos tipos de créditos
 
-## Getting Started
+## About:
+ 
+La App tiene un login con SQL, administrado a través del manejador de estados GetX
+ 
+## Screenshots:
+<img width="344" alt="Captura de pantalla 2023-07-28 a la(s) 11 46 10 p m" src="https://github.com/crisdur/banca_creditos/assets/48272016/a0f312cb-f7fa-43c3-aa25-0b4913d08fba">
 
-This project is a starting point for a Flutter application.
+<img width="358" alt="Captura de pantalla 2023-07-28 a la(s) 11 45 53 p m" src="https://github.com/crisdur/banca_creditos/assets/48272016/c71c9c34-b8e0-4df7-ad22-b83a6fcc06ef">
 
-A few resources to get you started if this is your first Flutter project:
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## This Projects runs with the command:
+
+```
+flutter run
+```
+## Version:
+
+Flutter 3.7.12 
+
+## dependencies:
+```
+dependencies:
+  change_app_package_name: ^1.1.0
+  cupertino_icons: ^1.0.2
+  dropdown_button2: ^2.1.4
+  flutter:
+    sdk: flutter
+  get: ^4.6.5
+  google_fonts: ^4.0.4
+  intl: ^0.18.1
+  shared_preferences: ^2.2.0
+  sqflite: ^2.2.8+4
+  sliding_up_panel: ^1.0.3
+
+  ```

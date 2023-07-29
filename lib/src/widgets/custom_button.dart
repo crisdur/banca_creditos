@@ -14,7 +14,8 @@ class CustomButton extends StatelessWidget {
   final Widget? child;
   final double height;
   final double? fontSize;
-
+  final Color? buttonColor;
+  final Color? fontColor;
   const CustomButton({
     Key? key,
     this.text,
@@ -26,6 +27,8 @@ class CustomButton extends StatelessWidget {
     this.loading = false,
     this.height = 50.0,
     this.fontSize,
+    this.buttonColor,
+    this.fontColor,
   }) : super(key: key);
 
   @override
@@ -39,7 +42,8 @@ class CustomButton extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: 10, vertical: 12),
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: isSecondary ? AppColors.secondary : AppColors.primary,
+            color: buttonColor ??
+                (isSecondary ? AppColors.secondary : AppColors.primary),
             borderRadius: BorderRadius.circular(10),
           ),
           child: loading == true
@@ -56,7 +60,8 @@ class CustomButton extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: GoogleFonts.sourceSansPro(
                         fontSize: responsiveFontSize(fontSize ?? 16, null),
-                        color: isSecondary ? Colors.white : Colors.black,
+                        color: fontColor ??
+                            (isSecondary ? Colors.white : Colors.black),
                         fontWeight: FontWeight.w700,
                       ),
                     ),

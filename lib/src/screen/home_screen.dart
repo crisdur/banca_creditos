@@ -1,3 +1,4 @@
+import 'package:banca_creditos/src/screen/authentication_selection_screen.dart';
 import 'package:banca_creditos/src/utils/greet_with_name.dart';
 import 'package:banca_creditos/src/widgets/custom_button.dart';
 import 'package:banca_creditos/src/widgets/custom_field.dart';
@@ -330,6 +331,21 @@ class _HomeScreenState extends State<HomeScreen> {
                                   isSecondary: true,
                                   loading: loadingSimulation,
                                 ),
+                                SizedBox(
+                                  height: 10,
+                                ),
+                                CustomButton(
+                                  onPressed: () => {
+                                    Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                AuthenticationSelectionScreen())),
+                                  },
+                                  text: 'Cerrar sesión',
+                                  buttonColor: Colors.red,
+                                  fontColor: Colors.white,
+                                )
                               ]),
                         )
                       ],

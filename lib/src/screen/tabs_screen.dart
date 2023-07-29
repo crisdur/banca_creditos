@@ -41,13 +41,16 @@ class _TabsScreenState extends State<TabsScreen> {
             _currentIndex = index;
           });
         },
+        selectedItemColor: Color(0xFF5428F1),
         items: const <BottomNavigationBarItem>[
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.home),
+            icon: Icon(Icons.home_filled),
             label: 'Home',
           ),
           BottomNavigationBarItem(
-            icon: Icon(CupertinoIcons.time),
+            icon: Icon(
+              Icons.email_outlined,
+            ),
             label: 'Historial',
           ),
         ],

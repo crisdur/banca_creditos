@@ -7,10 +7,9 @@ Aplicación para acceder a la simulación personalizada de distintos tipos de cr
 La App tiene un login con SQL, administrado a través del manejador de estados GetX
  
 ## Screenshots:
-<img width="344" alt="Captura de pantalla 2023-07-28 a la(s) 11 46 10 p m" src="https://github.com/crisdur/banca_creditos/assets/48272016/a0f312cb-f7fa-43c3-aa25-0b4913d08fba">
 
-<img width="358" alt="Captura de pantalla 2023-07-28 a la(s) 11 45 53 p m" src="https://github.com/crisdur/banca_creditos/assets/48272016/c71c9c34-b8e0-4df7-ad22-b83a6fcc06ef">
-
+<img width="344" alt="Captura de pantalla 2023-07-28 a la(s) 11 46 10 p m" src="https://github.com/crisdur/banca_creditos/assets/48272016/2b732823-c24c-4fc5-a4b0-fbb609da1261">
+<img width="358" alt="Captura de pantalla 2023-07-28 a la(s) 11 45 53 p m" src="https://github.com/crisdur/banca_creditos/assets/48272016/f8a27ce5-d11a-4515-a737-f663bea96130">
 
 
 ## This Projects runs with the command:

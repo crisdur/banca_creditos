@@ -5,8 +5,6 @@ import 'package:get/get.dart';
 
 import 'controller_bindings.dart';
 import 'src/controllers/auth_controller.dart';
-import 'src/screen/home_screen.dart';
-import 'src/screen/login_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

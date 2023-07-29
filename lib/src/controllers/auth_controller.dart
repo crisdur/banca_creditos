@@ -1,5 +1,6 @@
 import 'package:banca_creditos/src/screen/home_screen.dart';
 import 'package:banca_creditos/src/screen/sucess_register_screen.dart';
+import 'package:banca_creditos/src/screen/tabs_screen.dart';
 import 'package:get/get.dart';
 import 'package:sqflite/sqflite.dart';
 
@@ -7,8 +8,9 @@ import '../../sql_helper.dart';
 import '../models/user_model.dart';
 
 class AuthController extends GetxController {
-  var displayName = '';
   var rememberPass = false;
+
+  Rx<UserModel?> currentUser = Rx<UserModel?>(null);
 
   final dbHelper = SqlHelper();
 
@@ -158,13 +160,23 @@ class AuthController extends GetxController {
 
     for (var user in users) {
       if (user['email'] == email && user['password'] == password) {
+        UserModel loggedInUser = UserModel(
+          id: user['id'],
+          name: user['name'],
+          identification: user['identification'],
+          email: user['email'],
+          password: user['password'],
+        );
+
+        currentUser.value = loggedInUser;
+
         Get.snackbar(
           "Éxito",
           "Inicio de sesión exitoso",
           snackPosition: SnackPosition.BOTTOM,
         );
 
-        Get.offAll(HomeScreen());
+        Get.offAll(TabsScreen());
         return true;
       }
     }

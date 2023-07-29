@@ -1,34 +1,73 @@
 import 'package:banca_creditos/src/utils/responsive.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:intl/intl.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-class CustomTextField extends StatelessWidget {
+class CustomTextField extends StatefulWidget {
   final String hintText;
   final TextEditingController controller;
   final IconData? prefixIcon;
   final String? label;
+  final String? description;
+  final bool numbersonly; // Nuevo parámetro para permitir solo números
 
-  CustomTextField(
-      {required this.hintText,
-      required this.controller,
-      this.prefixIcon,
-      this.label});
+  CustomTextField({
+    required this.hintText,
+    required this.controller,
+    this.prefixIcon,
+    this.label,
+    this.description,
+    this.numbersonly = false, // Valor predeterminado es false
+  });
+
+  @override
+  _CustomTextFieldState createState() => _CustomTextFieldState();
+}
+
+class _CustomTextFieldState extends State<CustomTextField> {
+  final currencyFormatter = NumberFormat("#,##0.00", "es_CO");
+
+  @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    widget.controller.removeListener(_onTextChanged);
+    super.dispose();
+  }
+
+  void _onTextChanged() {
+    final text = widget.controller.text;
+    final value = int.tryParse(text.replaceAll(RegExp(r'[^0-9]'), ''));
+
+    if (value != null) {
+      final newString = currencyFormatter.format(value / 100);
+      widget.controller.value = TextEditingValue(
+        text: '\$ $newString',
+        selection:
+            TextSelection.collapsed(offset: '\$ '.length + newString.length),
+      );
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        if (label != null)
+        if (widget.label != null)
           Text(
-            label!,
+            widget.label!,
             style: GoogleFonts.openSans(
               fontSize: responsiveFontSize(15, null),
               fontWeight: FontWeight.w400,
               color: const Color(0xFF808A93),
             ),
           ),
-        if (label != null)
+        if (widget.label != null)
           SizedBox(
             height: responsiveHeight(size: 14),
           ),
@@ -41,10 +80,10 @@ class CustomTextField extends StatelessWidget {
               borderRadius: BorderRadius.circular(6),
             ),
           ),
-          child: TextField(
-            controller: controller,
+          child: TextFormField(
+            controller: widget.controller,
             style: const TextStyle(
-              color: Colors.black, // Color del texto ingresado
+              color: Colors.black,
               fontSize: 14,
               fontFamily: 'Product Sans',
               fontWeight: FontWeight.w400,
@@ -52,22 +91,28 @@ class CustomTextField extends StatelessWidget {
             decoration: InputDecoration(
               contentPadding:
                   const EdgeInsets.symmetric(vertical: 8, horizontal: 12),
-              hintText: hintText, // Placeholder del TextField
+              hintText: widget.hintText,
               hintStyle: const TextStyle(
-                color: Color(0xFFB1B5BB), // Color del placeholder
+                color: Color(0xFFB1B5BB),
                 fontSize: 14,
                 fontFamily: 'Product Sans',
                 fontWeight: FontWeight.w400,
               ),
-              border: InputBorder.none, // Quita el borde predeterminado
-              prefixIcon: prefixIcon != null
+              border: InputBorder.none,
+              prefixIcon: widget.prefixIcon != null
                   ? Icon(
-                      prefixIcon,
-                      color: Colors
-                          .grey, // Color del icono (puedes ajustarlo según necesites)
+                      widget.prefixIcon,
+                      color: Colors.grey,
+                      size: 20,
                     )
                   : null,
             ),
+            keyboardType: widget.numbersonly
+                ? TextInputType.number
+                : TextInputType.text, // Establecer el tipo de teclado
+            inputFormatters: widget.numbersonly
+                ? <TextInputFormatter>[FilteringTextInputFormatter.digitsOnly]
+                : null, // Agregar el formatter para permitir solo números
           ),
         ),
       ],

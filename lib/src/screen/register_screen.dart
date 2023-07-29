@@ -217,15 +217,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         isSecondary: true,
                       ),
                       SizedBox(
-                        height: 20,
-                      ),
-                      CustomButton(
-                        onPressed: () async => {userController.getUsers()},
-                        text: 'mostrar usuarios',
-                        isSecondary: true,
-                      ),
-                      SizedBox(
-                        height: responsiveHeight(size: 25),
+                        height: responsiveHeight(size: 20),
                       ),
                       InkWell(
                         onTap: () => {

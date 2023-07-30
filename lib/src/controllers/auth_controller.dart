@@ -1,4 +1,5 @@
 import 'package:banca_creditos/src/screen/home_screen.dart';
+import 'package:banca_creditos/src/screen/login_screen.dart';
 import 'package:banca_creditos/src/screen/sucess_register_screen.dart';
 import 'package:banca_creditos/src/screen/tabs_screen.dart';
 import 'package:get/get.dart';
@@ -100,7 +101,7 @@ class AuthController extends GetxController {
       snackPosition: SnackPosition.BOTTOM,
     );
 
-    Get.offAll(SucessRegisterScreen());
+    Get.offAll(LoginScreen());
   }
 
   Future<List<UserModel>> getUsers() async {

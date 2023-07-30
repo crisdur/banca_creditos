@@ -19,7 +19,6 @@ dependencies:
   intl: ^0.18.1
   shared_preferences: ^2.2.0
   sqflite: ^2.2.8+4
-  sliding_up_panel: ^1.0.3
 
 
 dev_dependencies:
